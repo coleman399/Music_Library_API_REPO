@@ -1,4 +1,4 @@
-from django.http import http404
+from django.http import Http404
 from .models import Song
 from .serializers import SongSerializer
 from rest_framework.views import APIView
@@ -26,7 +26,7 @@ class SongDetail(APIView):
         try:
             return Song.objects.get(pk=pk)
         except Song.DoesNotExist:
-            raise http404
+            raise Http404
     
     def get(self, request, pk):
         song = self.get_object(pk)
